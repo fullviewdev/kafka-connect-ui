@@ -1,4 +1,4 @@
-FROM alpine
+FROM --platform=arm64 alpine
 MAINTAINER Marios Andreopoulos <marios@landoop.com>
 
 WORKDIR /
@@ -7,7 +7,7 @@ RUN apk add --no-cache ca-certificates wget \
     && echo "progress = dot:giga" | tee /etc/wgetrc
 
 # Add and Setup Caddy webserver
-RUN wget "https://github.com/caddyserver/caddy/releases/download/v0.10.11/caddy_v0.10.11_linux_amd64.tar.gz" -O /caddy.tgz \
+RUN wget "https://github.com/caddyserver/caddy/releases/download/v0.10.11/caddy_v0.10.11_linux_arm64.tar.gz" -O /caddy.tgz \
     && mkdir caddy \
     && tar xzf caddy.tgz -C /caddy --no-same-owner \
     && rm -f /caddy.tgz
